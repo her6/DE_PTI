@@ -1,0 +1,97 @@
+#include "std_lib_facilities.h"
+using namespace std;
+
+int main()
+{
+	double a,b,c;
+	string unit="";
+	vector <double> v;
+	double smallest=99999999;
+	double largest=-9999999;
+	while (cin >> a >> unit) 
+	{
+		c=a;
+		if(unit=="m")
+		{
+			b=c;
+			v.push_back(b);
+		}
+		else if(unit=="cm")
+		{
+			c=c/100;
+			b=c;
+			v.push_back(b);
+		}
+		else if(unit=="in")
+		{
+			c=c/(100/2.54);
+			b=c;
+			v.push_back(b);
+		}
+		else if(unit=="ft")
+		{
+			c=c/(100/(2.54*12));
+			b=c;
+			v.push_back(b);
+		}
+		else
+			cout << "invaild (only cm,m,in,ft)\n";
+		
+
+		if(largest < b)
+		{ 
+			cout << "the largest so far\n";
+			largest=c;
+		}
+		if(smallest > b)
+		{
+			cout << "the smallest so far\n";
+			smallest=c;
+		}
+	}
+
+	double sum=0;
+	int db=0;
+	for(int i=0;i<v.size();i++)
+	{
+		sum+=v[i];
+		db++;
+	}
+	cout << "\nthe number of values: " << db;
+	cout << "\nthe sum of values: " << sum;
+	cout << "\nthe smallest: " << *min_element(v.begin(), v.end())<< " m"; 
+	cout << "\nthe largest: " << *max_element(v.begin(), v.end())<< " m\n"; 
+
+	sort(v);
+	for(int i=0;i<v.size();i++)
+	{
+		cout << v[i] << ", ";
+	}
+	return 0;
+
+}
+
+//double a,b;
+//cout <<"Enter 2 integers!"<<endl;
+//cin>>a>>b;
+//if(a==b)
+     //   {cout<<"the numbers are equal"<<endl;
+//}
+//if(a>b)
+   // {
+    //    cout<<"The smaller value is: "<<b<<endl;
+    //    cout<<"the larger value is: "<<a<<endl;
+    //    if((a-b)<1.0/100)
+      //  {
+      //      cout<<"the numbers are almost equal";
+      //  }
+  //  }
+   // if(a<b)
+   // {
+    //    cout<<"The smaller value is: "<<a<<endl;
+     //   cout<<"the larger value is: "<<b<<endl;
+     //  if((b-a)<1.0/100)
+        //{
+       //     cout<<"the numbers are almost equal";
+       // }
+    //}
